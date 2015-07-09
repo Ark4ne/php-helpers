@@ -1,0 +1,36 @@
+{
+  "name": "akr4ne/helpers",
+  "description": "A Manager of multithreading queue processing for laravel.",
+  "keywords": [
+    "php",
+    "function",
+    "helpers"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Allegret Guillaume"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0",
+    "satooshi/php-coveralls": "~0.6"
+  },
+  "autoload": {
+    "files": ["src/helpers.php"],
+    "psr-4": {
+      "Ark4ne\\Helpers\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Ark4ne\\Helpers\\": "src/"
+    },
+    "classmap": []
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
