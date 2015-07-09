@@ -1,5 +1,5 @@
 {
-  "name": "akr4ne/helpers",
+  "name": "akr4ne/php-helpers",
   "description": "A Manager of multithreading queue processing for laravel.",
   "keywords": [
     "php",
