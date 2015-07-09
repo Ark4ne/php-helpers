@@ -333,12 +333,12 @@ class URL
 			if (is_array($value)) {
 				$_q = [];
 				foreach ($value as $v) {
-					$_q[] = $key . '[]=' . $v;
+					$_q[] = $key . '[]=' . urlencode($v);
 				}
 				$raw_query[] = implode('&', $_q);
 			}
 			else {
-				$raw_query[] = $key . '=' . $value;
+				$raw_query[] = $key . '=' . urlencode($value);
 			}
 		}
 

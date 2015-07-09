@@ -12,20 +12,20 @@ class HelpersFunctionsTest extends PHPUnit_Framework_TestCase
 	{
 		$url = 'https://www.google.com/';
 
-		$this->assertEquals($url, _url($url));
-		$this->assertEquals($url, _url($url, [], true));
-		$this->assertEquals($url, _url($url, [], true, 'www.google.com'));
-		$this->assertEquals($url, _url($url, [], true, 'www.google.com/'));
+		$this->assertEquals($url, url($url));
+		$this->assertEquals($url, url($url, [], true));
+		$this->assertEquals($url, url($url, [], true, 'www.google.com'));
+		$this->assertEquals($url, url($url, [], true, 'www.google.com/'));
 
 		$url_not_secure = 'http://www.google.com/';
-		$this->assertEquals($url_not_secure, _url($url_not_secure));
-		$this->assertEquals($url, _url($url_not_secure, [], true));
+		$this->assertEquals($url_not_secure, url($url_not_secure));
+		$this->assertEquals($url, url($url_not_secure, [], true));
 
 		$url_not_secure_no_slash = 'http://www.google.com';
-		$this->assertEquals($url_not_secure_no_slash . '/', _url($url_not_secure_no_slash));
-		$this->assertEquals($url, _url($url_not_secure_no_slash, [], true));
+		$this->assertEquals($url_not_secure_no_slash . '/', url($url_not_secure_no_slash));
+		$this->assertEquals($url, url($url_not_secure_no_slash, [], true));
 
 		$url = 'http://www.google.com/';
-		$this->assertEquals($url . '?a=a', _url($url_not_secure_no_slash, ['a' => 'a']));
+		$this->assertEquals($url . '?a=a', url($url_not_secure_no_slash, ['a' => 'a']));
 	}
 }

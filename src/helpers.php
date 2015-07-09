@@ -137,7 +137,7 @@ if (!function_exists('array_html_attr')) {
 	}
 }
 
-if (!function_exists('_url')) {
+if (!function_exists('ark_url')) {
 	/**
 	 * Return formatted url.
 	 *
@@ -148,7 +148,7 @@ if (!function_exists('_url')) {
 	 *
 	 * @return string
 	 */
-	function _url($to, $params = [], $secure = null, $domain = null)
+	function ark_url($to, $params = [], $secure = null, $domain = null)
 	{
 		$url = new \Ark4ne\Helpers\URL($to);
 
@@ -160,5 +160,22 @@ if (!function_exists('_url')) {
 		$domain !== null && $url->setDomainString($domain);
 
 		return (string)$url;
+	}
+}
+
+if (!function_exists('url')) {
+	/**
+	 * Return formatted url.
+	 *
+	 * @param string    $to
+	 * @param array     $params
+	 * @param null|bool $secure
+	 * @param null|bool $domain
+	 *
+	 * @return string
+	 */
+	function url($to, $params = [], $secure = null, $domain = null)
+	{
+		return ark_url($to, $params, $secure, $domain);
 	}
 }

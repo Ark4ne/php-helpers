@@ -188,4 +188,57 @@ class URLTest extends \PHPUnit_Framework_TestCase
 			$this->assertEquals($url, (string)$u->format($u->isSecure()));
 		}
 	}
+
+	public function testFullUsage()
+	{
+		$u = new \Ark4ne\Helpers\URL('www.github.com/Ark4ne/php-helpers');
+		$this->assertEquals('http://www.github.com/Ark4ne/php-helpers', (string)$u);
+		$u->setSecure(true);
+		$this->assertEquals('https://www.github.com/Ark4ne/php-helpers', (string)$u);
+		$u->setProtocol('git');
+		$u->setSecure(false);
+		$this->assertEquals('git://www.github.com/Ark4ne/php-helpers', (string)$u);
+		$u->setProtocol('ftp');
+		$u->setSecure(true);
+		$this->assertEquals('ftps://www.github.com/Ark4ne/php-helpers', (string)$u);
+	}
+
+	public function testShortCutFunction()
+	{
+		$url = 'https://www.google.com/';
+
+		$this->assertEquals($url, url($url));
+		$this->assertEquals($url, url($url, [], true));
+		$this->assertEquals($url, url($url, [], true, 'www.google.com'));
+		$this->assertEquals($url, url($url, [], true, 'www.google.com/'));
+
+		$url_not_secure = 'http://www.google.com/';
+		$this->assertEquals($url_not_secure, url($url_not_secure));
+		$this->assertEquals($url, url($url_not_secure, [], true));
+
+		$url_not_secure_no_slash = 'http://www.google.com';
+		$this->assertEquals($url_not_secure_no_slash . '/', url($url_not_secure_no_slash));
+		$this->assertEquals($url, url($url_not_secure_no_slash, [], true));
+
+		$url = 'http://www.google.com/';
+		$this->assertEquals($url . '?a=a', url($url_not_secure_no_slash, ['a' => 'a']));
+
+		$url = 'https://www.google.com/';
+
+		$this->assertEquals($url, ark_url($url));
+		$this->assertEquals($url, ark_url($url, [], true));
+		$this->assertEquals($url, ark_url($url, [], true, 'www.google.com'));
+		$this->assertEquals($url, ark_url($url, [], true, 'www.google.com/'));
+
+		$url_not_secure = 'http://www.google.com/';
+		$this->assertEquals($url_not_secure, ark_url($url_not_secure));
+		$this->assertEquals($url, ark_url($url_not_secure, [], true));
+
+		$url_not_secure_no_slash = 'http://www.google.com';
+		$this->assertEquals($url_not_secure_no_slash . '/', ark_url($url_not_secure_no_slash));
+		$this->assertEquals($url, ark_url($url_not_secure_no_slash, [], true));
+
+		$url = 'http://www.google.com/';
+		$this->assertEquals($url . '?a=a', ark_url($url_not_secure_no_slash, ['a' => 'a']));
+	}
 }
