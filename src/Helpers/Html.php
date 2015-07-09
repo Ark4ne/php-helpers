@@ -32,7 +32,7 @@ class Html
 		return $this->dataToStringForAttr(json_encode($object));
 	}
 
-	public function dataToStringForAttr($string)
+	function dataToStringForAttr($string)
 	{
 		return str_replace("'", '\u2019', $string);
 	}
@@ -44,5 +44,20 @@ class Html
 		}
 
 		return self::$instance;
+	}
+
+	public static function arrayAttr($attribute, array $array, $delimiter = ',')
+	{
+		return $attribute . "='" . self::arrayValue($array, $delimiter) . "'";
+	}
+
+	public static function arrayValue(array $array, $delimiter = ',')
+	{
+		return self::instance()->arrayToStringForAttr($array, $delimiter);
+	}
+
+	function arrayToStringForAttr(array $array, $delimiter = ',')
+	{
+		return $this->dataToStringForAttr(implode($delimiter, $array));
 	}
 }

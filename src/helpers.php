@@ -106,6 +106,37 @@ if (!function_exists('json_html_attr')) {
 	}
 }
 
+if (!function_exists('array_html_string')) {
+	/**
+	 * Return full html attribute with array formatted string from $object.
+	 *
+	 * @param $array
+	 * @param $delimiter
+	 *
+	 * @return string
+	 */
+	function array_html_string(array $array, $delimiter = ',')
+	{
+		return \Ark4ne\Helpers\Html::arrayValue($array, $delimiter);
+	}
+}
+
+if (!function_exists('array_html_attr')) {
+	/**
+	 * Return full html attribute with array formatted string from $object.
+	 *
+	 * @param $attr
+	 * @param $array
+	 * @param $delimiter
+	 *
+	 * @return string
+	 */
+	function array_html_attr($attr, array $array, $delimiter = ',')
+	{
+		return \Ark4ne\Helpers\Html::arrayAttr($attr, $array, $delimiter);
+	}
+}
+
 if (!function_exists('_url')) {
 	/**
 	 * Return formatted url.
