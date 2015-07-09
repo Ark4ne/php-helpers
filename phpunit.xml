@@ -11,7 +11,7 @@
          syntaxCheck="false"
         >
     <testsuites>
-        <testsuite name="Application Test Suite">
+        <testsuite name="All Helpers">
             <directory>./tests/</directory>
         </testsuite>
     </testsuites>
